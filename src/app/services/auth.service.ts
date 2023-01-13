@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { EMPTY, Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { AuthData, RegisterData, TokenResponse } from '../interfaces/auth';
 
 @Injectable({
@@ -14,7 +14,6 @@ export class AuthService {
     private readonly router: Router
   ) {}
 
-  logged = false;
   loginChange$ = new ReplaySubject<boolean>(1);
 
   login(authData: AuthData): Observable<TokenResponse> {
@@ -23,5 +22,20 @@ export class AuthService {
 
   register(registerData: RegisterData): Observable<void> {
     return this.http.post<void>(`users`, registerData);
+  }
+
+  isLogged(): boolean {
+    if (!localStorage.getItem('token')) {
+      return false;
+    } else {
+      this.loginChange$.next(true);
+      return true;
+    }
+  }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.loginChange$.next(false);
+    this.router.navigate(['/auth/login'])
   }
 }

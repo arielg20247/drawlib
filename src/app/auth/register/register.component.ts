@@ -7,12 +7,13 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit{
-
-  constructor(private readonly authService: AuthService,
-    private readonly router: Router){}
+export class RegisterComponent implements OnInit {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
 
   registerData!: RegisterData;
 
@@ -24,14 +25,16 @@ export class RegisterComponent implements OnInit{
     this.registerData = {
       email: '',
       password: '',
-      name: ''
+      name: '',
     };
   }
 
   register(): void {
     this.authService.register(this.registerData).subscribe({
       next: () => {
-        Swal.fire('Te has registrado correctamente', '', 'success').then(() => this.router.navigate(['/auth/login']));
+        Swal.fire('Te has registrado correctamente', '', 'success').then(() =>
+          this.router.navigate(['/auth/login'])
+        );
       },
       error: (error) => {
         console.log(error);
@@ -44,4 +47,12 @@ export class RegisterComponent implements OnInit{
     });
   }
 
+  changeImage(fileInput: HTMLInputElement) {
+    if (!fileInput.files || fileInput.files.length === 0) return;
+    const reader: FileReader = new FileReader();
+    reader.readAsDataURL(fileInput.files[0]);
+    reader.addEventListener('loadend', (e) => {
+      this.registerData.picture = reader.result as string;
+    });
+  }
 }

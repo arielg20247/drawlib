@@ -32,8 +32,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.authData).subscribe({
       next: (res) => {
         localStorage.setItem('token', res.token);
+        this.authService.loginChange$.next(true);
         Swal.fire('Te has logeado correctamente', '', 'success').then(() => this.router.navigate(['/']));
-
       },
       error: (error) => {
         console.log(error);
@@ -45,4 +45,6 @@ export class LoginComponent implements OnInit {
       },
     });
   }
+
+
 }

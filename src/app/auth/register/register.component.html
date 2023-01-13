@@ -8,20 +8,25 @@
               <h2 class="fw-bold mb-4 text-uppercase">Acceso a usuario</h2>
               <div class="form-outline form-white mb-4">
                 <div class="form-outline form-white mb-4">
-                  <input [(ngModel)]="registerData.name" type="text" id="typePasswordX" class="form-control form-control-lg" />
-                  <label class="form-label" for="typePasswordX">Name</label>
+                  <input [(ngModel)]="registerData.name" type="text" id="name" class="form-control form-control-lg" />
+                  <label class="form-label" for="name">Name</label>
                 </div>
-                <input [(ngModel)]="registerData.email" type="email" id="typeEmailX" class="form-control form-control-lg" />
-                <label class="form-label" for="typeEmailX">Email</label>
+                <input [(ngModel)]="registerData.email" type="email" id="email" class="form-control form-control-lg" />
+                <label class="form-label" for="email">Email</label>
               </div>
               <div class="form-outline form-white mb-4">
-                <input [(ngModel)]="registerData.password" type="password" id="typePasswordX" class="form-control form-control-lg" />
-                <label class="form-label" for="typePasswordX">Contraseña</label>
+                <input [(ngModel)]="registerData.password" type="password" id="password" class="form-control form-control-lg" />
+                <label class="form-label" for="password">Contraseña</label>
+              </div>
+              <div class="form-outline form-white mb-4">
+                <input type="file" #fileImage ngModel (change)="changeImage(fileImage)" required type="file" id="picture" class="form-control form-control-lg" />
+                <label class="form-label" for="picture">Foto de perfil</label>
+                <img class="product-img" [src]="registerData.picture">
               </div>
               <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="register()">Login</button>
             </div>
             <div>
-              <p class="mb-0">¿No tienes una cuenta? <a [routerLink]="['/auth/register']" class="text-white-50 fw-bold">Regístrate</a>
+              <p class="mb-0">Ya tienes una cuenta? <a [routerLink]="['/auth/login']" class="text-white-50 fw-bold">Inicia sesión </a>
               </p>
             </div>
           </div>

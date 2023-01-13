@@ -1,0 +1,23 @@
+<div class="mx-auto mt-3" style="width: 70%">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let image of imagesData" class="col">
+      <div class="card h-100">
+        <img
+          src="http://localhost:8080/getImage/{{image.image}}"
+          class="card-img-top"
+          alt="Skyscrapers"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{image.title}}</h5>
+          <p class="card-text">
+            {{image.comment}}
+          </p>
+        </div>
+        <div class="card-footer" style="text-align: right;">
+          <span style="text-align: left;">{{image.tag.tag}}</span>
+          <small class="text-muted" >{{image.date | date:' h:mm d/M/yy'}}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
