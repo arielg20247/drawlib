@@ -26,7 +26,6 @@ export class IsLoggedGuard implements CanActivate {
       if(autentification)
       {
         return true;
-
       }
       else
       {

@@ -10,7 +10,10 @@ const routes: Routes = [
   {
     path: 'drawings',
     loadChildren: () => import('./drawings/drawings.module').then((m) => m.DrawingsModule),
-
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then((m) => m.ProfileModule),
   },
   { path: '', redirectTo: '/auth', pathMatch: 'full' },
   { path: '**', redirectTo: '/auth', pathMatch: 'full' },

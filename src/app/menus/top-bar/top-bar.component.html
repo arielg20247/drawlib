@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container-fluid" *ngIf="loginValue">
-    <a class="navbar-brand" [routerLink]="['/events']"><img src="assets/logo/logo.png " width="85"priority></a>
+    <a class="navbar-brand" [routerLink]="['/drawings']"><img src="assets/logo/logo.png " width="85"priority></a>
     <ul class="navbar-nav me-auto mb-lg-0">
       <li class="nav-item">
       </li>
@@ -11,7 +11,10 @@
         <a class="nav-link" [routerLink]="['/drawings/categories']" [routerLinkActive]="['active']">Categorias</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/profile/me']" [routerLinkActive]="['active']">Mi perfil</a>
+        <a class="nav-link" [routerLink]="['/drawings/upload']" [routerLinkActive]="['active']">Subir dibujo</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/profile']" [routerLinkActive]="['active']">Mi perfil</a>
       </li>
       <li class="nav-item" >
         <a (click)="logout()" class="nav-link" [routerLink]="['/auth/login']">Logout</a>
@@ -21,7 +24,7 @@
   </div>
 
   <div class="container-fluid" *ngIf="!loginValue">
-    <a class="navbar-brand" [routerLink]="['/events']">Events manager</a>
+    <a class="navbar-brand"><img src="assets/logo/logo.png " width="85"priority></a>
     <ul class="navbar-nav me-auto mb-lg-0">
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/auth/login']" [routerLinkActive]="['active']"
