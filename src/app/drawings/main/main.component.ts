@@ -1,28 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Drawings } from 'src/app/interfaces/drawings';
+import { Profile } from 'src/app/interfaces/profile';
 import { DrawingsService } from 'src/app/services/drawings.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
   constructor(
     private readonly drawingsService: DrawingsService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+    private readonly profileService: ProfileService
   ) {}
 
-
-  imagesData?:Drawings[];
-
+  user?: Profile;
+  imagesData: Drawings[] = this.route.snapshot.data['image'];
 
   ngOnInit(): void {
-    this.drawingsService.getAllImages().subscribe((res) => {
-      this.imagesData = res.image;
-      console.log(res);
+    this.route.params.subscribe((params: Params) => {
+      if (params['id']) {
+        console.log('hola');
+      }
+      this.profileService
+        .getProfile(params['id'])
+        .subscribe((res) => (this.user = res));
     });
   }
-
 }

@@ -1,15 +1,12 @@
-<div class="mx-auto mt-3" style="width: 80%">
-  <h1 *ngIf="user">Fotos subidas por {{user.name}}</h1>
-  <div class="row row-cols-1 row-cols-md-2 g-4">
-    <div *ngFor="let image of imagesData" class="col">
+<div class="mx-auto mt-3" style="width: 55%">
+  <div class="row row-cols-1 row-cols-md-1 g-4">
+    <div class="col">
       <div class="card h-100">
-        <a [routerLink]="['/drawings/' + image.id ]" style="text-decoration: none;" class="text-muted">
         <img
           src="http://localhost:8080/getImage/{{ image.image }}"
           class="card-img-top"
           alt="Skyscrapers"
         />
-        </a>
         <div class="card-body">
           <h5 class="card-title">{{ image.title }}</h5>
           <p class="card-text">

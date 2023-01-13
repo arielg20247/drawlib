@@ -1,3 +1,5 @@
+import { Profile } from "./profile"
+
 export interface Drawings {
   id: string,
   image:string,
@@ -7,11 +9,16 @@ export interface Drawings {
   numLikes: number,
   userId: number,
   tagId :number,
-  tag:Tag
+  tag:Tag,
+  user:Profile
 }
 
 export interface DrawingsResponse {
   image:Drawings[]
+}
+
+export interface DrawingResponse {
+  image:Drawings
 }
 
 export interface Tag {
