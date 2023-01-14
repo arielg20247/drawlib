@@ -33,3 +33,16 @@ export interface Tag {
 export interface TagResponse {
   resultTags:Tag[]
 }
+
+export interface DrawingComment {
+  id:number,
+  comment:string,
+  date:string
+  userId:number,
+  imageId:number,
+  user:Profile
+}
+
+export interface DrawingCommentResponse {
+  commentData:DrawingComment[]
+}

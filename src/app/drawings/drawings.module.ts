@@ -8,6 +8,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import {MatChipsModule} from '@angular/material/chips';
     DrawingsRoutingModule,
     FormsModule,
     MatRadioModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ]
 })
 export class DrawingsModule { }

@@ -6,6 +6,7 @@
           src="http://localhost:8080/getImage/{{ image.image }}"
           class="card-img-top"
           alt="Skyscrapers"
+          id="picture"
         />
         <div class="card-body">
           <h5 class="card-title">{{ image.title }}</h5>
@@ -13,21 +14,27 @@
             {{ image.comment }}
           </p>
           <p class="card-text text-muted">
-            <a [routerLink]="['/profile/' + image.user!.id ]" style="text-decoration: none;" class="text-muted">
-            Subido por: {{ image.user!.name }}
-            <img
-              *ngIf="image.user!.picture"
-              src="http://localhost:8080/getImageProfile/{{ image.user!.picture }}"
-              class="rounded-circle"
-              width="40"
-            />
-            <img
-              *ngIf="!image.user!.picture"
-              src="../../../assets//profilepicture/default.jpg"
-              class="rounded-circle"
-              width="40"
-            />
-          </a>
+            <a
+              [routerLink]="['/profile/' + image.user!.id]"
+              style="text-decoration: none"
+              class="text-muted"
+            >
+              Subido por: {{ image.user!.name }}
+              <img
+                *ngIf="image.user!.picture"
+                src="http://localhost:8080/getImageProfile/{{
+                  image.user!.picture
+                }}"
+                class="rounded-circle"
+                width="40"
+              />
+              <img
+                *ngIf="!image.user!.picture"
+                src="../../../assets//profilepicture/default.jpg"
+                class="rounded-circle"
+                width="40"
+              />
+            </a>
           </p>
         </div>
         <div class="card-footer" style="text-align: right">
@@ -35,6 +42,56 @@
           <small class="text-muted">{{
             image.date | date : " h:mm d/M/yy"
           }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Comment section -->
+
+  <div class="container mt-5">
+    <div class="d-flex justify-content-center row">
+      <div class="col-md-8">
+        <div class="d-flex flex-column comment-section">
+          <div *ngFor="let comment of comments" class="bg-white p-2">
+            <div class="d-flex flex-row user-info">
+              <img
+                class="rounded-circle"
+                src="http://localhost:8080/getImageProfile/{{
+                  comment.user.picture
+                }}"
+                width="40"
+              />
+              <div class="d-flex flex-column justify-content-start ml-2">
+                <span class="d-block font-weight-bold name">{{
+                  comment.user.name
+                }}</span
+                ><span class="date text-black-50">{{
+                  comment.date | date : " h:mm d/M/yy"
+                }}</span>
+              </div>
+            </div>
+            <div class="mt-2">
+              <p class="comment-text">{{ comment.comment }}</p>
+            </div>
+          </div>
+          <div class="bg-light p-2">
+            <div class="d-flex flex-row align-items-start">
+              <img
+                class="rounded-circle"
+                src="http://localhost:8080/getImageProfile/{{
+                  image.user!.picture
+                }}"
+                width="40"
+              /><textarea
+                class="form-control ml-1 shadow-none textarea"
+              ></textarea>
+            </div>
+            <div class="mt-2 text-right">
+              <button class="btn btn-primary btn-sm shadow-none" type="button">
+                Post comment</button
+              >
+            </div>
+          </div>
         </div>
       </div>
     </div>

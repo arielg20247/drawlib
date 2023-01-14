@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Drawings } from 'src/app/interfaces/drawings';
+import { DrawingComment, Drawings } from 'src/app/interfaces/drawings';
 
 @Component({
   selector: 'item-detail',
@@ -13,10 +13,12 @@ export class ItemDetailComponent implements OnInit{
 
 
   image:Drawings =  this.route.snapshot.data['image'];
+  comments:DrawingComment[] =  this.route.snapshot.data['comments'];
 
   ngOnInit(): void {
 
     console.log(this.image);
+    console.log(this.comments);
   }
 }
 

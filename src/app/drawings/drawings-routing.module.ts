@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IsLoggedGuard } from '../guards/is-logged.guard';
+import { CommentsResolver } from '../resolvers/comments.resolver';
 import { ImageByUserResolver } from '../resolvers/image-by-user.resolver';
 import { ImageResolver } from '../resolvers/image.resolver';
 import { TagsResolver } from '../resolvers/tags.resolver';
@@ -42,6 +43,7 @@ const routes: Routes = [
     component: ItemDetailComponent,
     resolve: {
       image: ImageResolver,
+      comments: CommentsResolver,
     },
   },
 ];

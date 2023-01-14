@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { DrawingResponse, Drawings, DrawingsResponse, newDrawingResponse, Tag, TagResponse } from '../interfaces/drawings';
+import { DrawingComment, DrawingCommentResponse, DrawingResponse, Drawings, DrawingsResponse, newDrawingResponse, Tag, TagResponse } from '../interfaces/drawings';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,10 @@ export class DrawingsService {
 
   getTags(): Observable<Tag[]> {
     return this.http.get<TagResponse>(`images/tags`).pipe(map((res) => res.resultTags));
+  }
+
+  getComments(id:number): Observable<DrawingComment[]> {
+    return this.http.get<DrawingCommentResponse>(`comments/` + id).pipe(map((res) => res.commentData));
   }
 
 }
