@@ -5,6 +5,7 @@ import { DrawingsRoutingModule } from './drawings-routing.module';
 import { MainComponent } from './main/main.component';
 import { UploadComponent } from './upload/upload.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
   ],
   imports: [
     CommonModule,
-    DrawingsRoutingModule
+    DrawingsRoutingModule,
+    FormsModule,
   ]
 })
 export class DrawingsModule { }

@@ -13,16 +13,16 @@
             {{ image.comment }}
           </p>
           <p class="card-text text-muted">
-            <a [routerLink]="['/profile/' + image.user.id ]" style="text-decoration: none;" class="text-muted">
-            Subido por: {{ image.user.name }}
+            <a [routerLink]="['/profile/' + image.user!.id ]" style="text-decoration: none;" class="text-muted">
+            Subido por: {{ image.user!.name }}
             <img
-              *ngIf="image.user.picture"
-              src="http://localhost:8080/getImageProfile/{{ image.user.picture }}"
+              *ngIf="image.user!.picture"
+              src="http://localhost:8080/getImageProfile/{{ image.user!.picture }}"
               class="rounded-circle"
               width="40"
             />
             <img
-              *ngIf="!image.user.picture"
+              *ngIf="!image.user!.picture"
               src="../../../assets//profilepicture/default.jpg"
               class="rounded-circle"
               width="40"
@@ -31,7 +31,7 @@
           </p>
         </div>
         <div class="card-footer" style="text-align: right">
-          <span style="text-align: left">{{ image.tag.tag }}</span>
+          <span style="text-align: left">{{ image.tag!.tag }}</span>
           <small class="text-muted">{{
             image.date | date : " h:mm d/M/yy"
           }}</small>

@@ -21,7 +21,7 @@
               <div class="form-outline form-white mb-4">
                 <input type="file" #fileImage ngModel (change)="changeImage(fileImage)" required type="file" id="picture" class="form-control form-control-lg" />
                 <label class="form-label" for="picture">Foto de perfil</label>
-                <img class="product-img" [src]="registerData.picture">
+                <img class="product-img cimg-thumbnail mb-3" [src]="registerData.picture">
               </div>
               <button class="btn btn-outline-light btn-lg px-5" type="submit" (click)="register()">Login</button>
             </div>

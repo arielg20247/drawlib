@@ -1,16 +1,16 @@
 import { Profile } from "./profile"
 
 export interface Drawings {
-  id: string,
-  image:string,
+  id?: string,
+  image?:string,
   title:string,
   comment:string,
-  date: string,
-  numLikes: number,
+  date?: string,
+  numLikes?: number,
   userId: number,
   tagId :number,
-  tag:Tag,
-  user:Profile
+  tag?:Tag,
+  user?:Profile
 }
 
 export interface DrawingsResponse {
@@ -19,6 +19,10 @@ export interface DrawingsResponse {
 
 export interface DrawingResponse {
   image:Drawings
+}
+
+export interface newDrawingResponse {
+  newImage:Drawings
 }
 
 export interface Tag {

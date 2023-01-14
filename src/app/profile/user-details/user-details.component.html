@@ -18,13 +18,11 @@
         />
       </div>
     </div>
-
     <div class="mt-5 text-center">
       <h4 class="mb-0">{{ userData.name }}</h4>
-
+      <a [routerLink]="['/drawings/user/' + userData.id]">
       <button class="btn btn-primary btn-sm follow">Follow</button>
-
-
+    </a>
     </div>
   </div>
 </div>

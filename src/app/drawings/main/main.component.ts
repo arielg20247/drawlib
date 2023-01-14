@@ -24,11 +24,10 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       if (params['id']) {
-        console.log('hola');
-      }
-      this.profileService
+        this.profileService
         .getProfile(params['id'])
         .subscribe((res) => (this.user = res));
+      }
     });
   }
 }

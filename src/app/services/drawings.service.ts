@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { DrawingResponse, Drawings, DrawingsResponse } from '../interfaces/drawings';
+import { DrawingResponse, Drawings, DrawingsResponse, newDrawingResponse } from '../interfaces/drawings';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class DrawingsService {
 
 
   getAllImages():Observable<Drawings[]> {
-    return this.http.get<DrawingsResponse>(`images`).pipe(map((res) => res.image));;
+    return this.http.get<DrawingsResponse>(`images`).pipe(map((res) => res.image));
   }
 
   getOneImage(id:number): Observable<Drawings> {
@@ -25,6 +25,10 @@ export class DrawingsService {
 
   getImagesByUser(id:number): Observable<Drawings[]> {
     return this.http.get<DrawingsResponse>(`images/user/` + id).pipe(map((res) => res.image));
+  }
+
+  postImage(image:Drawings): Observable<Drawings> {
+    return this.http.post<newDrawingResponse>(`images`,image).pipe(map((res) => res.newImage));
   }
 
 }

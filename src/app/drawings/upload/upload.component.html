@@ -1,1 +1,31 @@
-<p>upload works!</p>
+<div class="container mt-4">
+<form class="mt-4" #eventForm="ngForm" (ngSubmit)="addEvent()">
+  <div class="mb-3">
+    <label for="title" class="form-label">Título</label>
+    <input type="text" [(ngModel)]="newImage.title" class="form-control" name="title" placeholder="Introduce el título" required/>
+    <div class="invalid-feedback">
+      El título es obligatorio, mínimo 8 caracteres.
+    </div>
+    <div class="valid-feedback">Título válido</div>
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Descripción</label>
+    <textarea class="form-control" placeholder="Introduce un comentario" name="description" [(ngModel)]="newImage.comment" rows="3" required></textarea>
+    <div class="invalid-feedback">El comentario es obligatorio, mínimo 8 caracteres.</div>
+    <div class="valid-feedback">Comentario válido</div>
+  </div>
+  <div class="mb-3">
+    <label for="image" class="form-label">Imágen</label>
+    <input type="file" class="form-control" [(ngModel)]="imageName" name="image" #fileImage
+      (change)="changeImage(fileImage)" required #imageModel="ngModel" />
+    <div class="invalid-feedback">An image is required.</div>
+    <div class="valid-feedback">Imágen válida</div>
+  </div>
+  <img *ngIf="newImage.image" [src]="newImage.image" alt="" id="imgPreview" class="img-thumbnail mb-3" />
+  <div>
+    <button type="submit" [disabled]="eventForm.invalid" class="btn btn-primary">
+      Crear imágen
+    </button>
+  </div>
+</form>
+</div>
