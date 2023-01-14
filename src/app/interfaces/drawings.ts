@@ -10,7 +10,8 @@ export interface Drawings {
   userId: number,
   tagId? :number,
   tag?:Tag,
-  user?:Profile
+  user?:Profile,
+  canEdit?:boolean
 }
 
 export interface DrawingsResponse {
@@ -18,7 +19,8 @@ export interface DrawingsResponse {
 }
 
 export interface DrawingResponse {
-  image:Drawings
+  image:Drawings,
+  canEdit?:boolean
 }
 
 export interface newDrawingResponse {

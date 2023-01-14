@@ -20,7 +20,10 @@ export class DrawingsService {
   }
 
   getOneImage(id:number): Observable<Drawings> {
-    return this.http.get<DrawingResponse>(`images/` + id).pipe(map((res) => res.image));
+    return this.http.get<DrawingResponse>(`images/` + id).pipe(map((res) => {
+      res.image.canEdit = res.canEdit;
+      return res.image
+    }));
   }
 
   getImagesByUser(id:number): Observable<Drawings[]> {

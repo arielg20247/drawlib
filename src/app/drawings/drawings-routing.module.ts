@@ -38,6 +38,15 @@ const routes: Routes = [
     },
   },
   {
+    path: 'edit/:id',
+    canActivate: [IsLoggedGuard],
+    component: UploadComponent,
+    resolve: {
+      tags: TagsResolver,
+      image: ImageResolver,
+    },
+  },
+  {
     path: ':id',
     canActivate: [IsLoggedGuard],
     component: ItemDetailComponent,

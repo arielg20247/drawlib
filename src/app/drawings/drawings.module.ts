@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 
 
@@ -24,7 +25,8 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     MatRadioModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ]
 })
 export class DrawingsModule { }

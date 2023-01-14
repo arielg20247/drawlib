@@ -35,6 +35,7 @@
       class="example-radio-group"
       [(ngModel)]="newImage.tagId"
       name="tag"
+      required
     >
       <mat-radio-button
         class="example-radio-button"
@@ -44,7 +45,7 @@
         {{ tag.tag }}
       </mat-radio-button>
     </mat-radio-group>
-    <div class="mb-3">
+    <div *ngIf="!editing" class="mb-3">
       <label for="image" class="form-label">Imágen</label>
       <input
         type="file"
@@ -59,13 +60,22 @@
       <div class="invalid-feedback">Imágen es obligatorio</div>
       <div class="valid-feedback">Imágen válida</div>
     </div>
+    <div>
     <img
-      *ngIf="newImage.image"
+      *ngIf="newImage.image && !editing"
       [src]="newImage.image"
       alt=""
       id="imgPreview"
       class="img-thumbnail mb-3"
     />
+    <img
+      *ngIf="editing"
+      src="http://localhost:8080/getImage/{{ newImage.image }}"
+      alt=""
+      id="imgPreview"
+      class="img-thumbnail mb-3"
+    />
+  </div>
     <div>
       <button
         type="submit"

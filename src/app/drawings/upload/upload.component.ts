@@ -26,33 +26,44 @@ export class UploadComponent implements OnInit{
   newImage!:Drawings;
   imageName!:string;
   tags:Tag[] =  this.route.snapshot.data['tags'];
+  editing = false;
+
 
 
   ngOnInit(): void {
-    console.log(this.tags);
-    this.newImage = {
-      title: '',
-      comment: '',
-      userId:0,
+
+    if(this.route.snapshot.data['image']){
+      this.newImage = this.route.snapshot.data['image'];
+      this.editing = true;
+    }
+    else{
+      this.newImage = {
+        title: '',
+        comment: '',
+        userId:0,
+      }
     }
   }
 
   addEvent(){
-    this.drawingsService.postImage(this.newImage).subscribe({
-      next: (res) => {
-        Swal.fire('Imágen subida correctamente', '', 'success').then(() =>
-          this.router.navigate(['/drawings/' + res.id])
-        );
-      },
-      error: (error) => {
-        console.log(error.error.error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: error.error.error,
-        });
-      },
-    });
+    if(!this.editing){
+      this.drawingsService.postImage(this.newImage).subscribe({
+        next: (res) => {
+          Swal.fire('Imágen subida correctamente', '', 'success').then(() =>
+            this.router.navigate(['/drawings/' + res.id])
+          );
+        },
+        error: (error) => {
+          console.log(error.error.error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.error,
+          });
+        },
+      });
+    }
+
   }
 
   changeImage(fileInput: HTMLInputElement) {
@@ -63,5 +74,4 @@ export class UploadComponent implements OnInit{
       this.newImage.image = reader.result as string;
     });
   }
-
 }

@@ -17,6 +17,7 @@ export class ItemDetailComponent implements OnInit{
 
   ngOnInit(): void {
 
+    console.log(this.image.canEdit);
     console.log(this.image);
     console.log(this.comments);
   }
