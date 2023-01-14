@@ -8,7 +8,7 @@ export interface Drawings {
   date?: string,
   numLikes?: number,
   userId: number,
-  tagId :number,
+  tagId? :number,
   tag?:Tag,
   user?:Profile
 }
@@ -28,4 +28,8 @@ export interface newDrawingResponse {
 export interface Tag {
   id:string,
   tag:string
+}
+
+export interface TagResponse {
+  resultTags:Tag[]
 }

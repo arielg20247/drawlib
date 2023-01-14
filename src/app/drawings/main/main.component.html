@@ -1,48 +1,68 @@
-<div class="container mt-4">
 <div class="mx-auto mt-4" style="width: 80%">
-  <h1 *ngIf="user">Fotos subidas por {{user.name}}</h1>
-  <div class="row row-cols-1 row-cols-md-2 g-3">
-    <h2 *ngIf="!imagesData[0]">No hay fotos para mostrar</h2>
-    <div *ngFor="let image of imagesData" class="col">
-      <div class="card h-100">
-        <a [routerLink]="['/drawings/' + image.id ]" style="text-decoration: none;" class="text-muted">
-        <img
-          src="http://localhost:8080/getImage/{{ image.image }}"
-          class="card-img-top"
-          alt="Skyscrapers"
-        />
-        </a>
-        <div class="card-body">
-          <h5 class="card-title">{{ image.title }}</h5>
-          <p class="card-text">
-            {{ image.comment }}
-          </p>
-          <p class="card-text text-muted">
-            <a [routerLink]="['/profile/' + image.user!.id ]" style="text-decoration: none;" class="text-muted">
-            Subido por: {{ image.user!.name }}
+  <h1 *ngIf="user">Fotos subidas por {{ user.name }}</h1>
+  <div class="container mt-4">
+    <mat-chip-listbox
+      aria-label="Fish selection"
+      [(ngModel)]="currentFilter"
+      name="tag"
+    >
+    <mat-chip-option *ngFor="let tag of tags" [value]="tag.id">{{
+      tag.tag
+      }}</mat-chip-option>
+    </mat-chip-listbox>
+
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+      <h2 *ngIf="!imagesData[0]">No hay fotos para mostrar</h2>
+      <div *ngFor="let image of imagesData" class="col">
+        <div *ngIf="(image.tagId === currentFilter || !currentFilter)" class="card h-100">
+          <a
+            [routerLink]="['/drawings/' + image.id]"
+            style="text-decoration: none"
+            class="text-muted"
+          >
             <img
-              *ngIf="image.user!.picture"
-              src="http://localhost:8080/getImageProfile/{{ image.user!.picture }}"
-              class="rounded-circle"
-              width="40"
-            />
-            <img
-              *ngIf="!image.user!.picture"
-              src="../../../assets//profilepicture/default.jpg"
-              class="rounded-circle"
-              width="40"
+              src="http://localhost:8080/getImage/{{ image.image }}"
+              class="card-img-top"
+              alt="Skyscrapers"
             />
           </a>
-          </p>
-        </div>
-        <div class="card-footer" style="text-align: right">
-          <span style="text-align: left">{{ image.tag!.tag }}</span>
-          <small class="text-muted">{{
-            image.date | date : " h:mm d/M/yy"
-          }}</small>
+          <div class="card-body">
+            <h5 class="card-title">{{ image.title }}</h5>
+            <p class="card-text">
+              {{ image.comment }}
+            </p>
+            <p class="card-text text-muted">
+              <a
+                [routerLink]="['/profile/' + image.user!.id]"
+                style="text-decoration: none"
+                class="text-muted"
+              >
+                Subido por: {{ image.user!.name }}
+                <img
+                  *ngIf="image.user!.picture"
+                  src="http://localhost:8080/getImageProfile/{{
+                    image.user!.picture
+                  }}"
+                  class="rounded-circle"
+                  width="40"
+                />
+                <img
+                  *ngIf="!image.user!.picture"
+                  src="../../../assets//profilepicture/default.jpg"
+                  class="rounded-circle"
+                  width="40"
+                />
+              </a>
+            </p>
+          </div>
+          <div class="card-footer" style="text-align: right">
+            <span style="text-align: left">{{ image.tag!.tag }}</span>
+            <small class="text-muted">{{
+              image.date | date : " h:mm d/M/yy"
+            }}</small>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>

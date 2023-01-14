@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Drawings } from 'src/app/interfaces/drawings';
+import { Drawings, Tag } from 'src/app/interfaces/drawings';
 import { Profile } from 'src/app/interfaces/profile';
 import { DrawingsService } from 'src/app/services/drawings.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -20,6 +20,9 @@ export class MainComponent implements OnInit {
 
   user?: Profile;
   imagesData: Drawings[] = this.route.snapshot.data['image'];
+  tags:Tag[] =  this.route.snapshot.data['tags'];
+  currentFilter?:number;
+
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {

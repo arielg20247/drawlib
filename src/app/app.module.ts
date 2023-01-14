@@ -9,14 +9,12 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { MenusModule } from './menus/menus.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MenusModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
@@ -30,6 +28,6 @@ import { MenusModule } from './menus/menus.module';
       multi: true,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

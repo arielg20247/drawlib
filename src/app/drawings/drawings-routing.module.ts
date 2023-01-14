@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { IsLoggedGuard } from '../guards/is-logged.guard';
 import { ImageByUserResolver } from '../resolvers/image-by-user.resolver';
 import { ImageResolver } from '../resolvers/image.resolver';
+import { TagsResolver } from '../resolvers/tags.resolver';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { MainComponent } from './main/main.component';
 import { UploadComponent } from './upload/upload.component';
@@ -14,7 +15,9 @@ const routes: Routes = [
     component: MainComponent,
     resolve: {
       image: ImageByUserResolver,
+      tags: TagsResolver,
     },
+
   },
   {
     path: '',
@@ -22,12 +25,16 @@ const routes: Routes = [
     component: MainComponent,
     resolve: {
       image: ImageByUserResolver,
+      tags: TagsResolver,
     },
   },
   {
     path: 'upload',
     canActivate: [IsLoggedGuard],
     component: UploadComponent,
+    resolve: {
+      tags: TagsResolver,
+    },
   },
   {
     path: ':id',

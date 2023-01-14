@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Drawings } from 'src/app/interfaces/drawings';
+import { Drawings, Tag } from 'src/app/interfaces/drawings';
 import { DrawingsService } from 'src/app/services/drawings.service';
 import Swal from 'sweetalert2';
 
@@ -16,21 +16,24 @@ export class UploadComponent implements OnInit{
     private readonly router: Router,
     private readonly drawingsService: DrawingsService,
     private readonly route: ActivatedRoute
-  ) {}
+  ) {
+
+  }
 
   @ViewChild('eventForm') eventForm!: NgForm;
 
 
   newImage!:Drawings;
   imageName!:string;
+  tags:Tag[] =  this.route.snapshot.data['tags'];
 
 
   ngOnInit(): void {
+    console.log(this.tags);
     this.newImage = {
       title: '',
       comment: '',
       userId:0,
-      tagId:14,
     }
   }
 
