@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DrawingComment, Drawings } from 'src/app/interfaces/drawings';
+import { DrawingsService } from 'src/app/services/drawings.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'item-detail',
@@ -8,18 +10,40 @@ import { DrawingComment, Drawings } from 'src/app/interfaces/drawings';
   styleUrls: ['./item-detail.component.css']
 })
 export class ItemDetailComponent implements OnInit{
-  constructor( private readonly router: Router,  private readonly route: ActivatedRoute  ) { }
+  constructor( private readonly router: Router,  private readonly route: ActivatedRoute, private readonly drawingsService: DrawingsService  ) { }
 
 
 
   image:Drawings =  this.route.snapshot.data['image'];
   comments:DrawingComment[] =  this.route.snapshot.data['comments'];
+  comment:DrawingComment = {
+    comment: '',
+  };
+
+  commentText = '';
 
   ngOnInit(): void {
+    console.log();
+  }
 
-    console.log(this.image.canEdit);
-    console.log(this.image);
-    console.log(this.comments);
+  postComment():void{
+    if (this.image.id)
+    this.comment.imageId = Number(this.image.id);
+    this.comment.comment = this.commentText;
+    this.drawingsService.postComment(this.comment).subscribe({
+      next: (res) => {
+        this.comments.push(res);
+        this.commentText = '';
+      },
+      error: (error) => {
+        console.log(error.error.error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      },
+    });
   }
 }
 

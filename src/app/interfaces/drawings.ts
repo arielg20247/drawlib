@@ -37,14 +37,18 @@ export interface TagResponse {
 }
 
 export interface DrawingComment {
-  id:number,
+  id?:number,
   comment:string,
-  date:string
-  userId:number,
-  imageId:number,
-  user:Profile
+  date?:string
+  userId?:number,
+  imageId?:number,
+  user?:Profile
 }
 
 export interface DrawingCommentResponse {
   commentData:DrawingComment[]
+}
+
+export interface DrawingCommentPostResponse {
+  commentData:DrawingComment
 }

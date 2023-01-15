@@ -10,7 +10,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatRadioModule,
     MatChipsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class DrawingsModule { }

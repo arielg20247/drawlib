@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { DrawingComment, DrawingCommentResponse, DrawingResponse, Drawings, DrawingsResponse, newDrawingResponse, Tag, TagResponse } from '../interfaces/drawings';
+import { DrawingComment, DrawingCommentPostResponse, DrawingCommentResponse, DrawingResponse, Drawings, DrawingsResponse, newDrawingResponse, Tag, TagResponse } from '../interfaces/drawings';
 
 @Injectable({
   providedIn: 'root'
@@ -34,12 +34,25 @@ export class DrawingsService {
     return this.http.post<newDrawingResponse>(`images`,image).pipe(map((res) => res.newImage));
   }
 
+  editImage(image:Drawings): Observable<void> {
+    image.image = undefined;
+    return this.http.put<void>(`images/edit/` + image.id,image);
+  }
+
   getTags(): Observable<Tag[]> {
     return this.http.get<TagResponse>(`images/tags`).pipe(map((res) => res.resultTags));
   }
 
   getComments(id:number): Observable<DrawingComment[]> {
     return this.http.get<DrawingCommentResponse>(`comments/` + id).pipe(map((res) => res.commentData));
+  }
+
+  postComment(comment:DrawingComment): Observable<DrawingComment> {
+    return this.http.post<DrawingCommentPostResponse>(`comments`,comment).pipe(map((res) => res.commentData));
+  }
+
+  deleteImage(image:string): Observable<void> {
+    return this.http.delete<void>(`images/delete/` + image );
   }
 
 }

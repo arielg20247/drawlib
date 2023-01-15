@@ -1,4 +1,17 @@
 <div class="container mt-4">
+  <ng-template [ngIf]="editing"
+    ><button
+      (click)="delete()"
+      mat-mini-fab
+      matTooltip="Accent"
+      color="accent"
+      style="background-color: rgb(252, 48, 48); color: white; float: right"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+    <br />
+  </ng-template>
+
   <form class="mt-4" #eventForm="ngForm" (ngSubmit)="addEvent()">
     <div class="mb-3">
       <label for="title" class="form-label">Título</label>
@@ -61,21 +74,21 @@
       <div class="valid-feedback">Imágen válida</div>
     </div>
     <div>
-    <img
-      *ngIf="newImage.image && !editing"
-      [src]="newImage.image"
-      alt=""
-      id="imgPreview"
-      class="img-thumbnail mb-3"
-    />
-    <img
-      *ngIf="editing"
-      src="http://localhost:8080/getImage/{{ newImage.image }}"
-      alt=""
-      id="imgPreview"
-      class="img-thumbnail mb-3"
-    />
-  </div>
+      <img
+        *ngIf="newImage.image && !editing"
+        [src]="newImage.image"
+        alt=""
+        id="imgPreview"
+        class="img-thumbnail mb-3"
+      />
+      <img
+        *ngIf="editing"
+        src="http://localhost:8080/getImage/{{ newImage.image }}"
+        alt=""
+        id="imgPreview"
+        class="img-thumbnail mb-3"
+      />
+    </div>
     <div>
       <button
         type="submit"

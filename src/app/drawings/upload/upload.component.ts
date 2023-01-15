@@ -54,6 +54,22 @@ export class UploadComponent implements OnInit{
           );
         },
         error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: error.error.error,
+          });
+        },
+      });
+    }
+    else{
+      this.drawingsService.editImage(this.newImage).subscribe({
+        next: (res) => {
+          Swal.fire('Imágen editada correctamente', '', 'success').then(() =>
+            this.router.navigate(['/drawings/' + this.newImage.id])
+          );
+        },
+        error: (error) => {
           console.log(error.error.error);
           Swal.fire({
             icon: 'error',
@@ -64,6 +80,27 @@ export class UploadComponent implements OnInit{
       });
     }
 
+  }
+
+  delete(){
+    if (this.newImage.id)
+    {
+      this.drawingsService.deleteImage(this.newImage.id).subscribe({
+        next: () => {
+          Swal.fire('Imágen borrada correctamente', '', 'success').then(() =>
+            this.router.navigate(['/drawings/'])
+          );
+        },
+        error: (error) => {
+          console.log(error.error.error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se ha podido borrar la imágen',
+          });
+        },
+      });
+    }
   }
 
   changeImage(fileInput: HTMLInputElement) {
