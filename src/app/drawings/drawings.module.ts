@@ -11,6 +11,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { ImageFilterTagPipe } from '../pipes/image-filter-tag.pipe';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import {MatIconModule} from '@angular/material/icon';
     MainComponent,
     UploadComponent,
     ItemDetailComponent,
+    ImageFilterTagPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatChipsModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
   ]
 })
 export class DrawingsModule { }

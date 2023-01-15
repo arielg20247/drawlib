@@ -1,13 +1,5 @@
-#picture {
-  display: block;
-  max-height: 500px;
-  width: auto;
-  height: auto;
-}
 
-body {
-  background: #eee;
-}
+
 .date {
   font-size: 11px;
 }

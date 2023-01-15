@@ -1,17 +1,27 @@
-<div class="mx-auto mt-3" style="width: 55%">
+<div class="mx-auto mt-3 cardContainer" style="width: 55%">
   <div class="row row-cols-1 row-cols-md-1 g-4">
     <div class="col">
       <div class="card h-100">
-        <img
-          src="http://localhost:8080/getImage/{{ image.image }}"
-          class="card-img-top"
-          alt="Skyscrapers"
-          id="picture"
-        />
+        <div class="imageWrapper">
+          <img
+            src="http://localhost:8080/getImage/{{ image.image }}"
+            class="card-img-top imageCard"
+            alt="Skyscrapers"
+            id="picture"
+          />
+        </div>
         <div class="card-body">
-          <button mat-fab extended style="background-color: rgb(238, 61, 91);color: white; float: right;">
+          <button
+            mat-fab
+            extended
+            style="
+              background-color: rgb(238, 61, 91);
+              color: white;
+              float: right;
+            "
+          >
             <mat-icon>favorite</mat-icon>
-            {{image.numLikes}}
+            {{ image.numLikes }}
           </button>
           <h5 class="card-title">{{ image.title }}</h5>
           <p class="card-text">
@@ -24,6 +34,7 @@
               class="text-muted"
             >
               Subido por: {{ image.user!.name }}
+
               <img
                 *ngIf="image.user!.picture"
                 src="http://localhost:8080/getImageProfile/{{
@@ -39,7 +50,15 @@
                 width="40"
               />
             </a>
-            <button [routerLink]="['/drawings/edit/' + image.id]" *ngIf="image.canEdit" mat-raised-button color="warn" style="float: right;">Editar foto</button>
+            <button
+              [routerLink]="['/drawings/edit/' + image.id]"
+              *ngIf="image.canEdit"
+              mat-raised-button
+              color="warn"
+              style="float: right"
+            >
+              Editar foto
+            </button>
           </p>
         </div>
         <div class="card-footer" style="text-align: right">
@@ -60,14 +79,18 @@
           <div class="bg-light p-2">
             <div class="d-flex flex-row align-items-start">
               <textarea
-              [(ngModel)]="commentText"
+                [(ngModel)]="commentText"
                 class="form-control ml-1 shadow-none textarea"
               ></textarea>
             </div>
             <div class="mt-2 text-right">
-              <button (click)="postComment()" class="btn btn-primary btn-sm shadow-none" type="button">
-                Subir comentario</button
+              <button
+                (click)="postComment()"
+                class="btn btn-primary btn-sm shadow-none"
+                type="button"
               >
+                Subir comentario
+              </button>
             </div>
           </div>
           <div *ngFor="let comment of comments" class="bg-white p-2">

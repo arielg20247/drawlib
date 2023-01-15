@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
   <div class="container-fluid" *ngIf="loginValue">
     <a class="navbar-brand" [routerLink]="['/drawings']"><img src="assets/logo/logo.png " width="85"priority></a>
-    <ul class="navbar-nav me-auto mb-lg-0">
+    <ul class="navbar-nav me-auto mb-lg-0 relative">
       <li class="nav-item">
       </li>
       <li class="nav-item">
@@ -13,7 +13,7 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/profile']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Mi perfil</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item right">
         <a (click)="logout()" class="nav-link" [routerLink]="['/auth/login']" sty><mat-icon>logout</mat-icon></a>
       </li>
 
