@@ -12,6 +12,7 @@
         </div>
         <div class="card-body">
           <button
+          (click)="unlike()"
           *ngIf="image.isLiked"
             mat-fab
             extended
@@ -25,6 +26,7 @@
             {{ image.numLikes }}
           </button>
           <button
+          (click)="like()"
           *ngIf="!image.isLiked"
             mat-fab
             extended

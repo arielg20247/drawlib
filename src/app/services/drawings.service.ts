@@ -56,4 +56,12 @@ export class DrawingsService {
     return this.http.delete<void>(`images/delete/` + image );
   }
 
+  likeImage(id:string): Observable<void> {
+    return this.http.get<void>(`images/like/` + id );
+  }
+
+  unlikeImage(id:string): Observable<void> {
+    return this.http.get<void>(`images/unlike/` + id );
+  }
+
 }

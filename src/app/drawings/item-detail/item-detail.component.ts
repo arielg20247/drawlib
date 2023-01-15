@@ -45,6 +45,44 @@ export class ItemDetailComponent implements OnInit{
       },
     });
   }
+
+  like():void{
+    if (this.image.id)
+    this.drawingsService.likeImage(this.image.id).subscribe({
+      next: (res) => {
+        this.image.isLiked = true;
+        if (this.image.numLikes)
+        this.image.numLikes = this.image.numLikes + 1;
+      },
+      error: (error) => {
+        console.log(error.error.error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      },
+    });
+  }
+
+  unlike():void{
+    if (this.image.id)
+    this.drawingsService.unlikeImage(this.image.id).subscribe({
+      next: (res) => {
+        this.image.isLiked = false;
+        if (this.image.numLikes)
+        this.image.numLikes = this.image.numLikes - 1;
+      },
+      error: (error) => {
+        console.log(error.error.error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: error.error.error,
+        });
+      },
+    });
+  }
 }
 
 
