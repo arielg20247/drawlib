@@ -12,10 +12,24 @@
         </div>
         <div class="card-body">
           <button
+          *ngIf="image.isLiked"
             mat-fab
             extended
             style="
               background-color: rgb(238, 61, 91);
+              color: white;
+              float: right;
+            "
+          >
+            <mat-icon>favorite</mat-icon>
+            {{ image.numLikes }}
+          </button>
+          <button
+          *ngIf="!image.isLiked"
+            mat-fab
+            extended
+            style="
+              background-color: grey;
               color: white;
               float: right;
             "

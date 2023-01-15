@@ -11,7 +11,8 @@ export interface Drawings {
   tagId? :number,
   tag?:Tag,
   user?:Profile,
-  canEdit?:boolean
+  canEdit?:boolean,
+  isLiked?:boolean
 }
 
 export interface DrawingsResponse {
@@ -20,7 +21,8 @@ export interface DrawingsResponse {
 
 export interface DrawingResponse {
   image:Drawings,
-  canEdit?:boolean
+  canEdit?:boolean,
+  isLiked?:boolean
 }
 
 export interface newDrawingResponse {

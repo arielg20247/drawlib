@@ -22,6 +22,7 @@ export class DrawingsService {
   getOneImage(id:number): Observable<Drawings> {
     return this.http.get<DrawingResponse>(`images/` + id).pipe(map((res) => {
       res.image.canEdit = res.canEdit;
+      res.image.isLiked = res.isLiked;
       return res.image
     }));
   }
