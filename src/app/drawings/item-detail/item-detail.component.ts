@@ -51,7 +51,7 @@ export class ItemDetailComponent implements OnInit{
     this.drawingsService.likeImage(this.image.id).subscribe({
       next: (res) => {
         this.image.isLiked = true;
-        if (this.image.numLikes)
+        if (this.image.numLikes || this.image.numLikes == 0)
         this.image.numLikes = this.image.numLikes + 1;
       },
       error: (error) => {

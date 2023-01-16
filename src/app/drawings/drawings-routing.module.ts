@@ -18,7 +18,6 @@ const routes: Routes = [
       image: ImageByUserResolver,
       tags: TagsResolver,
     },
-
   },
   {
     path: '',
