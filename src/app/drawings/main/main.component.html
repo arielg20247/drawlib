@@ -21,7 +21,7 @@
             class="text-muted"
           >
             <img
-              src="http://localhost:8080/getImage/{{ image.image }}"
+              src="http://35.180.109.13:5001/getImage/{{ image.image }}"
               class="card-img-top"
               alt="Skyscrapers"
             />
@@ -40,7 +40,7 @@
                 Subido por: {{ image.user!.name }}
                 <img
                   *ngIf="image.user!.picture"
-                  src="http://localhost:8080/getImageProfile/{{
+                  src="http://35.180.109.13:5001/getImageProfile/{{
                     image.user!.picture
                   }}"
                   class="rounded-circle"
