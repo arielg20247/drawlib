@@ -1,6 +1,7 @@
 {
   "name": "drawlib",
   "version": "0.0.0",
+  "homepage": "https://arielg20247.github.io/drawlib/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
