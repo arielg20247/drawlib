@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterData } from 'src/app/interfaces/auth';
 import { AuthService } from 'src/app/services/auth.service';
@@ -15,7 +16,10 @@ export class RegisterComponent implements OnInit {
     private readonly router: Router
   ) {}
 
+  @ViewChild('registerForm') registerForm!: NgForm;
+
   registerData!: RegisterData;
+  password2 = '';
 
   ngOnInit(): void {
     this.resetRegisterData();
@@ -26,6 +30,13 @@ export class RegisterComponent implements OnInit {
       email: '',
       password: '',
       name: '',
+    };
+  }
+
+  validClasses(ngModel: NgModel, validClass: string, errorClass: string) {
+    return {
+      [validClass]: ngModel.touched && ngModel.valid,
+      [errorClass]: ngModel.touched && ngModel.invalid,
     };
   }
 

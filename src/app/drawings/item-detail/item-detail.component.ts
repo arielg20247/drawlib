@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DrawingComment, Drawings } from 'src/app/interfaces/drawings';
 import { DrawingsService } from 'src/app/services/drawings.service';
+import { environment } from 'src/environment.prod';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,6 +15,7 @@ export class ItemDetailComponent implements OnInit{
 
 
 
+  imageUrl = environment.baseUrl;
   image:Drawings =  this.route.snapshot.data['image'];
   comments:DrawingComment[] =  this.route.snapshot.data['comments'];
   comment:DrawingComment = {

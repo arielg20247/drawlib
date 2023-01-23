@@ -7,7 +7,7 @@
     <div class="user text-center">
       <div class="profile">
         <img *ngIf="userData.picture"
-          src="http://35.180.109.13:5001/getImageProfile/{{userData.picture}}"
+          src="{{imageUrl}}/getImageProfile/{{userData.picture}}"
           class="rounded-circle"
           width="80"
         />
@@ -21,7 +21,8 @@
     <div class="mt-5 text-center">
       <h4 class="mb-0">{{ userData.name }}</h4>
       <a [routerLink]="['/drawings/user/' + userData.id]">
-      <button class="btn btn-primary btn-sm follow">Dibujos</button>
+      <button class="btn btn-primary btn-sm follow" style="margin-right: 10px;">Dibujos</button>
+      <button class="btn btn-warning btn-sm follow">Editar perfil</button>
     </a>
     </div>
   </div>

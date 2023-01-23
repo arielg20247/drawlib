@@ -4,7 +4,7 @@
       <div class="card h-100">
         <div class="imageWrapper">
           <img
-            src="http://35.180.109.13:5001/getImage/{{ image.image }}"
+            src="{{imageUrl}}/getImage/{{ image.image }}"
             class="card-img-top imageCard"
             alt="Skyscrapers"
             id="picture"
@@ -53,7 +53,7 @@
 
               <img
                 *ngIf="image.user!.picture"
-                src="http://35.180.109.13:5001/getImageProfile/{{
+                src="{{imageUrl}}/getImageProfile/{{
                   image.user!.picture
                 }}"
                 class="rounded-circle"
@@ -113,11 +113,18 @@
             <div class="d-flex flex-row user-info">
               <img
                 class="rounded-circle"
-                src="http://35.180.109.13:5001/getImageProfile/{{
+                *ngIf="image.user!.picture"
+                src="{{imageUrl}}/getImageProfile/{{
                   comment.user!.picture
                 }}"
                 width="40"
               />
+              <img
+              *ngIf="!image.user!.picture"
+              src="../../../assets//profilepicture/default.jpg"
+              class="rounded-circle"
+              width="40"
+            />
               <div class="d-flex flex-column justify-content-start ml-2">
                 <span class="d-block font-weight-bold name">{{
                   comment.user!.name

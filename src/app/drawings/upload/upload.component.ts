@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Drawings, Tag } from 'src/app/interfaces/drawings';
 import { DrawingsService } from 'src/app/services/drawings.service';
+import { environment } from 'src/environment.prod';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -23,6 +24,7 @@ export class UploadComponent implements OnInit{
   @ViewChild('eventForm') eventForm!: NgForm;
 
 
+  imageUrl = environment.baseUrl;
   newImage!:Drawings;
   imageName!:string;
   tags:Tag[] =  this.route.snapshot.data['tags'];

@@ -4,6 +4,7 @@ import { Drawings, Tag } from 'src/app/interfaces/drawings';
 import { Profile } from 'src/app/interfaces/profile';
 import { DrawingsService } from 'src/app/services/drawings.service';
 import { ProfileService } from 'src/app/services/profile.service';
+import { environment } from 'src/environment.prod';
 
 @Component({
   selector: 'main',
@@ -18,6 +19,7 @@ export class MainComponent implements OnInit {
     private readonly profileService: ProfileService
   ) {}
 
+  imageUrl = environment.baseUrl;
   user?: Profile;
   imagesData: Drawings[] = this.route.snapshot.data['image'];
   tags:Tag[] =  this.route.snapshot.data['tags'];
